@@ -5,6 +5,7 @@ Language Features:
 
 Compiler Features:
 * LSP: Add rudimentary support for semantic highlighting.
+ * Yul Optimizer: Simplify the starting offset of zero-length operations to zero.
 
 
 Bugfixes:
