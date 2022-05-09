@@ -562,7 +562,8 @@ class FileTestRunner:
                 testname_and_subdir = diagnostics["uri"].replace(self.suite.project_root_uri + "/", "")[:-len(".sol")]
                 testname, sub_dir = split_path(testname_and_subdir)
 
-                expected_diagnostics = tests[testname]
+                expected_diagnostics = tests.get(testname, {})
+
                 self.suite.expect_equal(
                     len(diagnostics["diagnostics"]),
                     len(expected_diagnostics),
@@ -1318,7 +1319,7 @@ class SolidityLSPTestSuite: # {{{
         self.setup_lsp(solc)
 
         sub_dirs = filter(
-            lambda filepath: filepath.is_dir(),
+            lambda filepath: filepath.is_dir() and filepath.name != 'node_modules',
             os.scandir(self.project_root_dir)
         )
 
