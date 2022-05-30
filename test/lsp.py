@@ -549,7 +549,7 @@ class FileTestRunner:
             for diagnostics in published_diagnostics:
                 if not diagnostics["uri"].startswith(self.suite.project_root_uri + "/"):
                     raise Exception(
-                        f"'{self.test_name}.sol' imported file outside of test directory: '{diagnostics['uri']}'"
+                        f"'{self.test_name}.sol' imported file {self.suite.project_root_uri} outside of test directory: '{diagnostics['uri']}'"
                     )
                 self.open_tests.append(diagnostics["uri"].replace(self.suite.project_root_uri + "/", "")[:-len(".sol")])
 
