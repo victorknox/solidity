@@ -654,6 +654,9 @@ class FileTestRunner:
                 "\nbut got:\n" + actual_pretty
             )
 
+        if self.suite.non_interactive:
+            return
+
         while True:
             print("(u)pdate/(r)etry/(i)gnore?")
             user_response = getCharFromStdin()
